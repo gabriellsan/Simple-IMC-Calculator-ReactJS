@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import React,{useState}from 'react'
 import './App.css';
+import Altura from './components/Altura';
+import Form from './components/Form';
+import Peso from './components/Peso';
+import Resultado from './components/Resultado';
+import Calcular from './components/Calcular';
 
 function App() {
+  const [peso,setPeso] = useState(0)
+  const [altura,setAltura] = useState(0)
+  const [resultado,setResultado] = useState(0)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Calculadora IMC</h1>
+      <Peso name={peso} setPeso={setPeso}/>
+      <Altura  name={altura} setAltura={setAltura}/>
+      <Calcular p={peso} a={altura} sr={setResultado}/>
+      <Resultado name={resultado}/>
+      <Form/>
     </div>
   );
 }
